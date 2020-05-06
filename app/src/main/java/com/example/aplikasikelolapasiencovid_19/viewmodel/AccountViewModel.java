@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import com.example.aplikasikelolapasiencovid_19.model.Admin;
 import com.example.aplikasikelolapasiencovid_19.repository.Repository;
 
+import java.util.List;
+
 public class AccountViewModel extends AndroidViewModel {
 
     private Repository repository;
@@ -18,8 +20,8 @@ public class AccountViewModel extends AndroidViewModel {
         repository = new Repository(application);
     }
 
-    public LiveData<Admin> getAdmin(String username){
-        return repository.getAdmin(username);
+    public LiveData<List<Admin>> getAllAdmin(){
+        return repository.getAllAdmin();
     }
 
     public void insertAdmin(Admin admin){

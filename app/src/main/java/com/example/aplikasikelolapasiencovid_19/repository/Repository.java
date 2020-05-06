@@ -9,6 +9,8 @@ import com.example.aplikasikelolapasiencovid_19.db.AppDatabase;
 import com.example.aplikasikelolapasiencovid_19.model.Admin;
 import com.example.aplikasikelolapasiencovid_19.model.AdminDao;
 
+import java.util.List;
+
 public class Repository {
 
     private AdminDao adminDao;
@@ -18,8 +20,8 @@ public class Repository {
         adminDao = db.adminDao();
     }
 
-    public LiveData<Admin> getAdmin(String username){
-        return adminDao.getAdmin(username);
+    public LiveData<List<Admin>> getAllAdmin(){
+        return adminDao.getAllAdmin();
     }
 
     public void insertAdmin(Admin admin){

@@ -9,6 +9,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface AdminDao {
 
@@ -21,7 +23,7 @@ public interface AdminDao {
     @Delete
     void deleteAdmin(Admin admin);
 
-    @Query("SELECT * FROM admin_table WHERE username=:username")
-    LiveData<Admin> getAdmin(String username);
+    @Query("SELECT * FROM admin_table")
+    LiveData<List<Admin>> getAllAdmin();
 
 }
