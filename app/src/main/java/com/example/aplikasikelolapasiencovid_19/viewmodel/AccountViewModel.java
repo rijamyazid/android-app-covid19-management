@@ -20,6 +20,11 @@ public class AccountViewModel extends AndroidViewModel {
         repository = new Repository(application);
     }
 
+    public boolean isAccountAvailable(String username, String password){
+        Admin admin = repository.getAdmin(username, password);
+        return admin != null;
+    }
+
     public LiveData<List<Admin>> getAllAdmin(){
         return repository.getAllAdmin();
     }

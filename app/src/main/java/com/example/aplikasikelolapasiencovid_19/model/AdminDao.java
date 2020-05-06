@@ -26,4 +26,7 @@ public interface AdminDao {
     @Query("SELECT * FROM admin_table")
     LiveData<List<Admin>> getAllAdmin();
 
+    @Query("SELECT * FROM admin_table WHERE username=:username AND password=:password")
+    Admin getAdmin(String username, String password);
+
 }

@@ -24,6 +24,10 @@ public class Repository {
         return adminDao.getAllAdmin();
     }
 
+    public Admin getAdmin(String username, String password){
+        return adminDao.getAdmin(username, password);
+    }
+
     public void insertAdmin(Admin admin){
         new InsertAdminAsyncTask(adminDao).execute(admin);
     }
