@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/gapSmall"
+    android:layout_marginEnd="@dimen/gapSmall"
+    android:layout_marginBottom="1dp"
+    android:layout_marginTop="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/gapMedium"
+        android:paddingStart="@dimen/gapSmall"
+        android:paddingTop="@dimen/gapSmall"
+        android:paddingBottom="@dimen/gapSmall">
+
+        <ImageView
+            android:id="@+id/img_item_foto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="@dimen/gapSmall"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/tv_item_nama_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/img_item_foto"
+            android:text="Nama : "/>
+        <TextView
+            android:id="@+id/tv_item_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_item_nama_field"
+            tools:text="Bagoy"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_item_usia_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/tv_item_usia"
+            android:gravity="end"
+            android:text="Usia : "/>
+        <TextView
+            android:id="@+id/tv_item_usia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            tools:text="18 Tahun"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_item_jk_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gapSmall"
+            android:layout_toEndOf="@id/img_item_foto"
+            android:layout_below="@id/tv_item_usia_field"
+            android:text="Jenis Kelamin : "/>
+        <TextView
+            android:id="@+id/tv_item_jk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Laki-Laki"
+            android:layout_marginTop="@dimen/gapSmall"
+            android:layout_toEndOf="@id/tv_item_jk_field"
+            android:layout_below="@id/tv_item_usia_field"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_item_provinsi_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Provinsi : "
+            android:layout_marginTop="@dimen/gapSmall"
+            android:layout_toEndOf="@id/img_item_foto"
+            android:layout_below="@id/tv_item_jk_field"/>
+        <TextView
+            android:id="@+id/tv_item_provinsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gapSmall"
+            android:layout_toEndOf="@id/tv_item_provinsi_field"
+            android:layout_below="@id/tv_item_jk_field"
+            tools:text="Jakarta"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

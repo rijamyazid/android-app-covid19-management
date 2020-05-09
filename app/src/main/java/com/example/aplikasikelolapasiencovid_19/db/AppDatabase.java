@@ -11,13 +11,17 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.aplikasikelolapasiencovid_19.model.Admin;
 import com.example.aplikasikelolapasiencovid_19.model.AdminDao;
+import com.example.aplikasikelolapasiencovid_19.model.Pasien;
+import com.example.aplikasikelolapasiencovid_19.model.PasienDao;
 
-@Database(entities = {Admin.class}, version = 1, exportSchema = false)
+@Database(entities = {Admin.class, Pasien.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE = null;
 
     public abstract AdminDao adminDao();
+
+    public abstract PasienDao pasienDao();
 
     public static AppDatabase getInstance(Context context){
         if(INSTANCE == null) INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
@@ -40,14 +44,19 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsyntask extends AsyncTask<Void, Void, Void> {
 
         private AdminDao adminDao;
+        private PasienDao pasienDao;
 
         private PopulateDbAsyntask(AppDatabase db){
             this.adminDao = db.adminDao();
+            this.pasienDao = db.pasienDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             adminDao.insertAdmin(new Admin("Admin", "Admin"));
+            pasienDao.insert(new Pasien("Mahmud", "Laki-Laki", 36, "Jakarta"));
+            pasienDao.insert(new Pasien("Nana", "Laki-Laki", 30, "Jakarta"));
+            pasienDao.insert(new Pasien("Lala", "Perempuan", 25, "Bali"));
             return null;
         }
     }
