@@ -6,4 +6,8 @@
     <string name="home_icon_text">Home</string>
     <string name="history_icon_text">History</string>
     <string name="account_icon_text">Account</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_text_login">Login</string>
+    <string name="btn_text_daftar">Daftar</string>
 </resources>

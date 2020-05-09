@@ -29,4 +29,7 @@ public interface AdminDao {
     @Query("SELECT * FROM admin_table WHERE username=:username AND password=:password")
     Admin getAdmin(String username, String password);
 
+    @Query("SELECT * FROM admin_table WHERE username=:username")
+    Admin getAdminByUsername(String username);
+
 }

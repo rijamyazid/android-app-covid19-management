@@ -28,6 +28,10 @@ public class Repository {
         return adminDao.getAdmin(username, password);
     }
 
+    public Admin getAdminByUsername(String username){
+        return adminDao.getAdminByUsername(username);
+    }
+
     public void insertAdmin(Admin admin){
         new InsertAdminAsyncTask(adminDao).execute(admin);
     }
