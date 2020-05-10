@@ -14,7 +14,7 @@ import com.example.aplikasikelolapasiencovid_19.model.AdminDao;
 import com.example.aplikasikelolapasiencovid_19.model.Pasien;
 import com.example.aplikasikelolapasiencovid_19.model.PasienDao;
 
-@Database(entities = {Admin.class, Pasien.class}, version = 3, exportSchema = false)
+@Database(entities = {Admin.class, Pasien.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE = null;
@@ -54,9 +54,9 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             adminDao.insertAdmin(new Admin("Admin", "Admin"));
-            pasienDao.insert(new Pasien("Mahmud", "Laki-Laki", 36, "Jakarta"));
-            pasienDao.insert(new Pasien("Nana", "Laki-Laki", 30, "Jakarta"));
-            pasienDao.insert(new Pasien("Lala", "Perempuan", 25, "Bali"));
+            pasienDao.insert(new Pasien("Mahmud", "Laki-Laki", 36, "Jakarta", "Sakit"));
+            pasienDao.insert(new Pasien("Nana", "Laki-Laki", 30, "Jakarta", "Sembuh"));
+            pasienDao.insert(new Pasien("Lala", "Perempuan", 25, "Bali", "Meninggal"));
             return null;
         }
     }

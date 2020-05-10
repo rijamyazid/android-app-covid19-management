@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/gapSmall"
     android:layout_marginEnd="@dimen/gapSmall"
-    android:layout_marginBottom="1dp"
+    android:layout_marginBottom="2dp"
     android:layout_marginTop="2dp">
 
     <RelativeLayout
@@ -17,12 +17,58 @@
         android:paddingTop="@dimen/gapSmall"
         android:paddingBottom="@dimen/gapSmall">
 
+        <LinearLayout
+            android:id="@+id/ll_item_top"
+            android:layout_width="match_parent"
+            android:paddingStart="@dimen/gapMedium"
+            android:layout_marginBottom="@dimen/gapSmall"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pasien no : "
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_item_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="001"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Status Pasien : "
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_item_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sakit"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_item_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/ll_item_top"
+            android:layout_marginBottom="@dimen/gapSmall"
+            android:background="@color/cardview_dark_background"/>
+
         <ImageView
             android:id="@+id/img_item_foto"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="@dimen/gapSmall"
             android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_below="@id/v_item_top"
             android:layout_alignParentStart="true"/>
 
         <TextView
@@ -30,28 +76,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/img_item_foto"
-            android:text="Nama : "/>
+            android:layout_below="@id/v_item_top"
+            android:text="Nama : "
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/tv_item_nama_field"
+            android:layout_below="@id/v_item_top"
             tools:text="Bagoy"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_usia_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/tv_item_usia"
+            android:layout_below="@id/v_item_top"
             android:gravity="end"
-            android:text="Usia : "/>
+            android:text="Usia : "
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_usia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/v_item_top"
             tools:text="18 Tahun"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_jk_field"
             android:layout_width="wrap_content"
@@ -59,7 +113,8 @@
             android:layout_marginTop="@dimen/gapSmall"
             android:layout_toEndOf="@id/img_item_foto"
             android:layout_below="@id/tv_item_usia_field"
-            android:text="Jenis Kelamin : "/>
+            android:text="Jenis Kelamin : "
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_jk"
             android:layout_width="wrap_content"
@@ -68,7 +123,8 @@
             android:layout_marginTop="@dimen/gapSmall"
             android:layout_toEndOf="@id/tv_item_jk_field"
             android:layout_below="@id/tv_item_usia_field"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_provinsi_field"
             android:layout_width="wrap_content"
@@ -76,7 +132,8 @@
             android:text="Provinsi : "
             android:layout_marginTop="@dimen/gapSmall"
             android:layout_toEndOf="@id/img_item_foto"
-            android:layout_below="@id/tv_item_jk_field"/>
+            android:layout_below="@id/tv_item_jk_field"
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_item_provinsi"
             android:layout_width="wrap_content"
@@ -85,7 +142,8 @@
             android:layout_toEndOf="@id/tv_item_provinsi_field"
             android:layout_below="@id/tv_item_jk_field"
             tools:text="Jakarta"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textSize="16sp"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -51,7 +51,7 @@ public class HistoryFragment extends Fragment {
 
         rvMain = view.findViewById(R.id.rv_main);
         rvMain.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        adapter = new HistoryAdapter();
+        adapter = new HistoryAdapter(view.getContext());
         rvMain.setAdapter(adapter);
         viewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         viewModel.getAllPasien().observe(getViewLifecycleOwner(), new Observer<List<Pasien>>() {

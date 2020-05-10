@@ -12,12 +12,14 @@ public class Pasien {
     private String jenisKelamin;
     private int usiaPasien;
     private String provinsiPasien;
+    private String status;
 
-    public Pasien(String namaPasien, String jenisKelamin, int usiaPasien, String provinsiPasien) {
+    public Pasien(String namaPasien, String jenisKelamin, int usiaPasien, String provinsiPasien, String status) {
         this.namaPasien = namaPasien;
         this.jenisKelamin = jenisKelamin;
         this.usiaPasien = usiaPasien;
         this.provinsiPasien = provinsiPasien;
+        this.status = status;
     }
 
     public void setIdPasien(int idPasien) {
@@ -43,4 +45,6 @@ public class Pasien {
     public String getProvinsiPasien() {
         return provinsiPasien;
     }
+
+    public String getStatus(){ return status; }
 }

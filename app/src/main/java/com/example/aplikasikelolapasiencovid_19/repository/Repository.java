@@ -17,17 +17,15 @@ public class Repository {
 
     private AdminDao adminDao;
     private PasienDao pasienDao;
-    private LiveData<List<Pasien>> pasiens;
 
     public Repository(Application application){
         AppDatabase db = AppDatabase.getInstance(application);
         adminDao = db.adminDao();
         pasienDao = db.pasienDao();
-        this.pasiens = pasienDao.getAllPasien();
     }
 
     public LiveData<List<Pasien>> getAllPasien(){
-        return pasiens;
+        return pasienDao.getAllPasien();
     }
 
     public void insertPasien(Pasien pasien){

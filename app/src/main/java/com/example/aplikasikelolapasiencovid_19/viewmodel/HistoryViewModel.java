@@ -15,15 +15,12 @@ public class HistoryViewModel extends AndroidViewModel {
 
     private Repository repository;
 
-    private LiveData<List<Pasien>> pasiens;
-
     public LiveData<List<Pasien>> getAllPasien(){
-        return pasiens;
+        return repository.getAllPasien();
     }
 
     public HistoryViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);
-        pasiens = repository.getAllPasien();
     }
 }
