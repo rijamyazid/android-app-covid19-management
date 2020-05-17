@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREF_KEY_LOGIN_USERNAME =
             "com.example.aplikasikelolapasiencovid_19.SHARED_PREF_KEY_LOGIN_USERNAME";
 
+    public static final int REQUEST_ADD_PASIEN = 1;
+
+
     private BottomNavigationView bnvMain;
 
     @Override
@@ -42,5 +45,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(MainActivity.SHARED_PREF_KEY_LOGIN_USERNAME, username);
         editor.apply();
+    }
+
+    public static boolean getSharedPrefStatus(SharedPreferences sharedPreferences){
+        return sharedPreferences.getBoolean(MainActivity.SHARED_PREF_KEY_LOGIN_STATUS, false);
     }
 }

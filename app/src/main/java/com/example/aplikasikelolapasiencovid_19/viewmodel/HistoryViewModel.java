@@ -23,4 +23,8 @@ public class HistoryViewModel extends AndroidViewModel {
         super(application);
         repository = new Repository(application);
     }
+
+    public void insertPasien(Pasien pasien){
+        repository.insertPasien(pasien);
+    }
 }
