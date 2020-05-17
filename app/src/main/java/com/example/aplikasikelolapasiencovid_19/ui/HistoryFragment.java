@@ -92,7 +92,19 @@ public class HistoryFragment extends Fragment {
         adapter.setOnItemClickListener(new HistoryAdapter.OnItemClickListener() {
             @Override
             public void onClick(Pasien pasien) {
-                showToast(pasien.getNamaPasien());
+                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
+                    showToast("Silahkan login terlebih dahulu");
+                    navigateToLoginFragment(getView());
+                } else {
+                    Intent intent = new Intent(getActivity(), PasienActivity.class);
+                    intent.putExtra(PasienActivity.EXTRA_ID, pasien.getIdPasien());
+                    intent.putExtra(PasienActivity.EXTRA_NAME, pasien.getNamaPasien());
+                    intent.putExtra(PasienActivity.EXTRA_USIA, pasien.getUsiaPasien());
+                    intent.putExtra(PasienActivity.EXTRA_JK, pasien.getJenisKelamin());
+                    intent.putExtra(PasienActivity.EXTRA_PROVINSI, pasien.getProvinsiPasien());
+                    intent.putExtra(PasienActivity.EXTRA_STATUS, pasien.getStatus());
+                    startActivityForResult(intent, MainActivity.REQUEST_UPDATE_PASIEN);
+                }
             }
         });
     }
@@ -111,9 +123,24 @@ public class HistoryFragment extends Fragment {
             viewModel.insertPasien(pasien);
 
             showToast("Data tersimpan");
+        } else if(requestCode == MainActivity.REQUEST_UPDATE_PASIEN && resultCode == RESULT_OK){
+            int pasienId = data.getIntExtra(PasienActivity.EXTRA_ID, 0);
+            String nama = data.getStringExtra(PasienActivity.EXTRA_NAME);
+            int usia = Integer.valueOf(data.getStringExtra(PasienActivity.EXTRA_USIA));
+            String jk = data.getStringExtra(PasienActivity.EXTRA_JK);
+            String provinsi = data.getStringExtra(PasienActivity.EXTRA_PROVINSI);
+            String status = data.getStringExtra(PasienActivity.EXTRA_STATUS);
+            Pasien pasien = new Pasien(nama, jk, usia, provinsi, status);
+            pasien.setIdPasien(pasienId);
+
+            viewModel.updatePasien(pasien);
+
+            showToast("Data tersimpan");
         } else {
             showToast("Data tidak disimpan");
         }
+
+
     }
 
     private ItemTouchHelper itemTouchHelper(final HistoryViewModel viewModel, final HistoryAdapter adapter){
@@ -125,8 +152,13 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                viewModel.deletePasien(adapter.getPasienAt(viewHolder.getAdapterPosition()));
-                showToast("Data dihapus");
+                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
+                    showToast("Silahkan login terlebih dahulu");
+                    navigateToLoginFragment(getView());
+                } else {
+                    viewModel.deletePasien(adapter.getPasienAt(viewHolder.getAdapterPosition()));
+                    showToast("Data dihapus");
+                }
             }
         });
     }

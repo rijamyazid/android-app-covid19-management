@@ -19,6 +19,8 @@ import java.util.List;
 
 public class PasienActivity extends AppCompatActivity {
 
+    public static final String EXTRA_ID =
+            "com.example.aplikasikelolapasiencovid_19.EXTRA_ID";
     public static final String EXTRA_NAME =
             "com.example.aplikasikelolapasiencovid_19.EXTRA_NAME";
     public static final String EXTRA_JK =
@@ -29,6 +31,21 @@ public class PasienActivity extends AppCompatActivity {
             "com.example.aplikasikelolapasiencovid_19.EXTRA_PROVINSI";
     public static final String EXTRA_STATUS =
             "com.example.aplikasikelolapasiencovid_19.EXTRA_STATUS";
+    private ArrayAdapter<String> dataAdapter;
+    private List<String> jkList = new ArrayList<String>(){
+        {
+            add("Laki-Laki");
+            add("Perempuan");
+        }
+    };
+    private List<String> provinsiList = new ArrayList<String>(){
+        {
+            add("Jakarta");
+            add("Bali");
+            add("Bandung");
+        }
+    };
+
 
     private Button btnCancel, btnSave;
     private EditText edtNama, edtUsia;
@@ -53,8 +70,37 @@ public class PasienActivity extends AppCompatActivity {
         rbStatusSakit = findViewById(R.id.rb_status_sakit_add);
         rbStatusSembuh = findViewById(R.id.rb_status_sembuh_add);
         rbStatusMeninggal = findViewById(R.id.rb_status_meninggal_add);
-
         setSpinnerValue();
+
+        Intent intent = getIntent();
+        if(intent.hasExtra(EXTRA_ID)){
+            setTitle("Edit Data Pasien");
+            edtNama.setText(intent.getStringExtra(EXTRA_NAME));
+            edtUsia.setText(String.valueOf(intent.getIntExtra(EXTRA_USIA, 0)));
+
+            int rbId = 0;
+            if(intent.getStringExtra(EXTRA_JK).equals(rbJKMale.getText().toString())){
+                rbId = rbJKMale.getId();
+            } else {
+                rbId = rbJKFemale.getId();
+            }
+            rgJK.check(rbId);
+
+            if(intent.getStringExtra(EXTRA_STATUS).equals(rbStatusSakit.getText().toString())){
+                rbId = rbStatusSakit.getId();
+            } else if(intent.getStringExtra(EXTRA_STATUS).equals(rbStatusSembuh.getText().toString())) {
+                rbId = rbStatusSembuh.getId();
+            } else {
+                rbId = rbStatusMeninggal.getId();
+            }
+            rgStatus.check(rbId);
+
+            int spinnerPosition = dataAdapter.getPosition(intent.getStringExtra(EXTRA_PROVINSI));
+            spinnerProvinsi.setSelection(spinnerPosition);
+
+        } else {
+            setTitle("Tambah Data Pasien");
+        }
 
         btnSave.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -62,7 +108,6 @@ public class PasienActivity extends AppCompatActivity {
                 save();
             }
         });
-
         btnCancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -73,14 +118,7 @@ public class PasienActivity extends AppCompatActivity {
     }
 
     private void setSpinnerValue(){
-        List<String> list = new ArrayList<String>(){
-            {
-                add("Jakarta");
-                add("Bali");
-                add("Bandung");
-            }
-        };
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, provinsiList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvinsi.setAdapter(dataAdapter);
     }
@@ -105,6 +143,10 @@ public class PasienActivity extends AppCompatActivity {
 
         if(!(nama.isEmpty() || usia.isEmpty() || jk.isEmpty() || status.isEmpty() || provinsi.isEmpty())){
             Intent intent = new Intent();
+            int id = getIntent().getIntExtra(EXTRA_ID, -1);
+            if(id != -1){
+                intent.putExtra(EXTRA_ID, id);
+            }
             intent.putExtra(EXTRA_NAME, nama);
             intent.putExtra(EXTRA_JK, jk);
             intent.putExtra(EXTRA_USIA, usia);

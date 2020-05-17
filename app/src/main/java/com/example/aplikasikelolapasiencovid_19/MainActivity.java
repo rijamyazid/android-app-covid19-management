@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             "com.example.aplikasikelolapasiencovid_19.SHARED_PREF_KEY_LOGIN_USERNAME";
 
     public static final int REQUEST_ADD_PASIEN = 1;
-
+    public static final int REQUEST_UPDATE_PASIEN = 2;
 
     private BottomNavigationView bnvMain;
 

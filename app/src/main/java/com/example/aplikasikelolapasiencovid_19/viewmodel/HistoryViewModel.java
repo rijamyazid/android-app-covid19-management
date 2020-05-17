@@ -31,4 +31,8 @@ public class HistoryViewModel extends AndroidViewModel {
     public void deletePasien(Pasien pasien){
         repository.deletePasien(pasien);
     }
+
+    public void updatePasien(Pasien pasien) {
+        repository.updatePasien(pasien);
+    }
 }
