@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,9 +70,11 @@ public class HistoryFragment extends Fragment {
         viewModel.getAllPasien().observe(getViewLifecycleOwner(), new Observer<List<Pasien>>() {
             @Override
             public void onChanged(List<Pasien> pasiens) {
-                adapter.setPasienList(pasiens);
+                adapter.submitList(pasiens);
             }
         });
+
+        itemTouchHelper(viewModel, adapter).attachToRecyclerView(rvMain);
 
         fabAddPasien.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -83,6 +86,13 @@ public class HistoryFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), PasienActivity.class);
                     startActivityForResult(intent, MainActivity.REQUEST_ADD_PASIEN);
                 }
+            }
+        });
+
+        adapter.setOnItemClickListener(new HistoryAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(Pasien pasien) {
+                showToast(pasien.getNamaPasien());
             }
         });
     }
@@ -104,6 +114,21 @@ public class HistoryFragment extends Fragment {
         } else {
             showToast("Data tidak disimpan");
         }
+    }
+
+    private ItemTouchHelper itemTouchHelper(final HistoryViewModel viewModel, final HistoryAdapter adapter){
+        return new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                viewModel.deletePasien(adapter.getPasienAt(viewHolder.getAdapterPosition()));
+                showToast("Data dihapus");
+            }
+        });
     }
 
     private void navigateToLoginFragment(View view){
