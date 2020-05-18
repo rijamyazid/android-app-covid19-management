@@ -1,9 +1,14 @@
 package com.example.aplikasikelolapasiencovid_19;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,12 +18,16 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasikelolapasiencovid_19.model.Pasien;
+import com.example.aplikasikelolapasiencovid_19.viewmodel.HistoryViewModel;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PasienActivity extends AppCompatActivity {
 
+    public static final int RESULT_DELETED = 2;
     public static final String EXTRA_ID =
             "com.example.aplikasikelolapasiencovid_19.EXTRA_ID";
     public static final String EXTRA_NAME =
@@ -52,6 +61,7 @@ public class PasienActivity extends AppCompatActivity {
     private Spinner spinnerProvinsi;
     private RadioGroup rgJK, rgStatus;
     private RadioButton rbJKMale, rbJKFemale, rbStatusSakit, rbStatusSembuh, rbStatusMeninggal, rbSelected;
+    private HistoryViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +80,7 @@ public class PasienActivity extends AppCompatActivity {
         rbStatusSakit = findViewById(R.id.rb_status_sakit_add);
         rbStatusSembuh = findViewById(R.id.rb_status_sembuh_add);
         rbStatusMeninggal = findViewById(R.id.rb_status_meninggal_add);
+        viewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         setSpinnerValue();
 
         Intent intent = getIntent();
@@ -115,6 +126,48 @@ public class PasienActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(getIntent().hasExtra(EXTRA_ID)){
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.pasien_menu, menu);
+            return true;
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_delete_item:
+
+                Intent intent = new Intent();
+
+                int id = getIntent().getIntExtra(EXTRA_ID, -1);
+                String name = getIntent().getStringExtra(EXTRA_NAME);
+                int usia = getIntent().getIntExtra(EXTRA_USIA, 0);
+                String jk = getIntent().getStringExtra(EXTRA_JK);
+                String status = getIntent().getStringExtra(EXTRA_STATUS);
+                String provinsi = getIntent().getStringExtra(EXTRA_PROVINSI);
+
+                intent.putExtra(EXTRA_ID, id);
+                intent.putExtra(EXTRA_NAME, name);
+                intent.putExtra(EXTRA_JK, jk);
+                intent.putExtra(EXTRA_USIA, usia);
+                intent.putExtra(EXTRA_PROVINSI, provinsi);
+                intent.putExtra(EXTRA_STATUS, status);
+
+                setResult(RESULT_DELETED, intent);
+
+                finish();
+
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setSpinnerValue(){

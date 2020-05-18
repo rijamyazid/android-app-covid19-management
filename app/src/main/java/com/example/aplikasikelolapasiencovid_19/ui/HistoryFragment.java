@@ -136,6 +136,19 @@ public class HistoryFragment extends Fragment {
             viewModel.updatePasien(pasien);
 
             showToast("Data tersimpan");
+        } else if(requestCode == MainActivity.REQUEST_UPDATE_PASIEN && resultCode == PasienActivity.RESULT_DELETED) {
+            int pasienId = data.getIntExtra(PasienActivity.EXTRA_ID, 0);
+            String nama = data.getStringExtra(PasienActivity.EXTRA_NAME);
+            int usia = data.getIntExtra(PasienActivity.EXTRA_USIA, 0);
+            String jk = data.getStringExtra(PasienActivity.EXTRA_JK);
+            String provinsi = data.getStringExtra(PasienActivity.EXTRA_PROVINSI);
+            String status = data.getStringExtra(PasienActivity.EXTRA_STATUS);
+            Pasien pasien = new Pasien(nama, jk, usia, provinsi, status);
+            pasien.setIdPasien(pasienId);
+
+            viewModel.deletePasien(pasien);
+
+            showToast("Data dihapus");
         } else {
             showToast("Data tidak disimpan");
         }
