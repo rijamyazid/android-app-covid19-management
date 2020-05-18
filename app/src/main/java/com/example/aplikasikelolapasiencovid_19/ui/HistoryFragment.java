@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aplikasikelolapasiencovid_19.MainActivity;
@@ -45,6 +46,7 @@ public class HistoryFragment extends Fragment {
     private HistoryAdapter adapter;
     private FloatingActionButton fabAddPasien;
     private SharedPreferences sharedPreferences;
+    private TextView tvLoginReminder;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -63,6 +65,7 @@ public class HistoryFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(MainActivity.SHARED_PREF_KEY_LOGIN, Context.MODE_PRIVATE);
         rvMain = view.findViewById(R.id.rv_main);
         fabAddPasien = view.findViewById(R.id.fab_add_pasien);
+        tvLoginReminder = view.findViewById(R.id.tv_login_reminder);
         rvMain.setLayoutManager(new LinearLayoutManager(view.getContext()));
         adapter = new HistoryAdapter(view.getContext());
         rvMain.setAdapter(adapter);
@@ -70,11 +73,30 @@ public class HistoryFragment extends Fragment {
         viewModel.getAllPasien().observe(getViewLifecycleOwner(), new Observer<List<Pasien>>() {
             @Override
             public void onChanged(List<Pasien> pasiens) {
-                adapter.submitList(pasiens);
+                if(viewModel.listSize < pasiens.size()){
+                    adapter.submitList(pasiens, new Runnable() {
+                        @Override
+                        public void run() {
+                            rvMain.smoothScrollToPosition(0);
+                        }
+                    });
+                    viewModel.listSize = pasiens.size();
+                } else {
+                    adapter.submitList(pasiens);
+                    viewModel.listSize = pasiens.size();
+                }
             }
         });
 
         itemTouchHelper(viewModel, adapter).attachToRecyclerView(rvMain);
+        if(MainActivity.getSharedPrefStatus(sharedPreferences)){
+            tvLoginReminder.setVisibility(View.GONE);
+            fabAddPasien.setVisibility(View.VISIBLE);
+        } else {
+            tvLoginReminder.setVisibility(View.VISIBLE);
+            fabAddPasien.setVisibility(View.GONE);
+        }
+
 
         fabAddPasien.setOnClickListener(new View.OnClickListener(){
             @Override

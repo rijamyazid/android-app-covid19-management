@@ -15,6 +15,8 @@ public class HistoryViewModel extends AndroidViewModel {
 
     private Repository repository;
 
+    public int listSize = 0;
+
     public LiveData<List<Pasien>> getAllPasien(){
         return repository.getAllPasien();
     }

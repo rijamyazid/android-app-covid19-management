@@ -7,12 +7,31 @@
     android:orientation="vertical"
     tools:context=".ui.HistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/rv_item"/>
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/rv_item"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/ic_shadow"/>
+        <TextView
+            android:id="@+id/tv_login_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/gapMedium"
+            android:paddingBottom="@dimen/gapMedium"
+            android:gravity="center"
+            android:text="Untuk menambahkan data,\nupdate data dan hapus data.\nAnda harus login terlebih dahulu"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_pasien"
