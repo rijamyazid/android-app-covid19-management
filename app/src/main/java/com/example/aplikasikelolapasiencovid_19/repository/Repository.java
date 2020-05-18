@@ -28,6 +28,10 @@ public class Repository {
         return pasienDao.getAllPasien();
     }
 
+    public LiveData<List<Pasien>> getPasienByStatus(String status){
+        return pasienDao.getPasienByStatus(status);
+    }
+
     public void insertPasien(Pasien pasien){
         new InsertPasienAsyncTask(pasienDao).execute(pasien);
     }

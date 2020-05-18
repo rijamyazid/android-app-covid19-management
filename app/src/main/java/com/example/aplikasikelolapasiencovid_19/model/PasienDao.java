@@ -18,7 +18,11 @@ public interface PasienDao {
     void update(Pasien pasien);
     @Delete
     void delete(Pasien pasien);
+
     @Query("SELECT * FROM pasien_table ORDER BY idPasien DESC")
     LiveData<List<Pasien>> getAllPasien();
+
+    @Query("SELECT * FROM pasien_table WHERE status=:status")
+    LiveData<List<Pasien>> getPasienByStatus(String status);
 
 }
