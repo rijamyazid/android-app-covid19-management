@@ -12,4 +12,5 @@
     <string name="btn_text_daftar">Daftar</string>
     <string name="btn_text_logout">Logout</string>
     <string name="prompt_province">-Pilih Provinsi-</string>
+    <string name="about_us">About Us</string>
 </resources>
