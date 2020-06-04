@@ -13,4 +13,6 @@
     <string name="btn_text_logout">Logout</string>
     <string name="prompt_province">-Pilih Provinsi-</string>
     <string name="about_us">About Us</string>
+    <string name="kelompok">Kelompok</string>
+    <string name="char_colon">:</string>
 </resources>

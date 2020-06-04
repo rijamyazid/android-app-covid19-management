@@ -65,7 +65,7 @@ public class HistoryFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(MainActivity.SHARED_PREF_KEY_LOGIN, Context.MODE_PRIVATE);
         rvMain = view.findViewById(R.id.rv_main);
         fabAddPasien = view.findViewById(R.id.fab_add_pasien);
-        tvLoginReminder = view.findViewById(R.id.tv_login_reminder);
+//        tvLoginReminder = view.findViewById(R.id.tv_login_reminder);
         rvMain.setLayoutManager(new LinearLayoutManager(view.getContext()));
         adapter = new HistoryAdapter(view.getContext());
         rvMain.setAdapter(adapter);
@@ -89,35 +89,35 @@ public class HistoryFragment extends Fragment {
         });
 
         itemTouchHelper(viewModel, adapter).attachToRecyclerView(rvMain);
-        if(MainActivity.getSharedPrefStatus(sharedPreferences)){
-            tvLoginReminder.setVisibility(View.GONE);
-            fabAddPasien.setVisibility(View.VISIBLE);
-        } else {
-            tvLoginReminder.setVisibility(View.VISIBLE);
-            fabAddPasien.setVisibility(View.GONE);
-        }
+//        if(MainActivity.getSharedPrefStatus(sharedPreferences)){
+//            tvLoginReminder.setVisibility(View.GONE);
+//            fabAddPasien.setVisibility(View.VISIBLE);
+//        } else {
+//            tvLoginReminder.setVisibility(View.VISIBLE);
+//            fabAddPasien.setVisibility(View.GONE);
+//        }
 
 
         fabAddPasien.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
-                    showToast("Silahkan login terlebih dahulu");
-                    navigateToLoginFragment(v);
-                } else {
+//                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
+//                    showToast("Silahkan login terlebih dahulu");
+//                    navigateToLoginFragment(v);
+//                } else {
                     Intent intent = new Intent(getActivity(), PasienActivity.class);
                     startActivityForResult(intent, MainActivity.REQUEST_ADD_PASIEN);
-                }
+//                }
             }
         });
 
         adapter.setOnItemClickListener(new HistoryAdapter.OnItemClickListener() {
             @Override
             public void onClick(Pasien pasien) {
-                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
-                    showToast("Silahkan login terlebih dahulu");
-                    navigateToLoginFragment(getView());
-                } else {
+//                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
+//                    showToast("Silahkan login terlebih dahulu");
+//                    navigateToLoginFragment(getView());
+//                } else {
                     Intent intent = new Intent(getActivity(), PasienActivity.class);
                     intent.putExtra(PasienActivity.EXTRA_ID, pasien.getIdPasien());
                     intent.putExtra(PasienActivity.EXTRA_NAME, pasien.getNamaPasien());
@@ -126,7 +126,7 @@ public class HistoryFragment extends Fragment {
                     intent.putExtra(PasienActivity.EXTRA_PROVINSI, pasien.getProvinsiPasien());
                     intent.putExtra(PasienActivity.EXTRA_STATUS, pasien.getStatus());
                     startActivityForResult(intent, MainActivity.REQUEST_UPDATE_PASIEN);
-                }
+//                }
             }
         });
     }
@@ -187,13 +187,13 @@ public class HistoryFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
-                    showToast("Silahkan login terlebih dahulu");
-                    navigateToLoginFragment(getView());
-                } else {
+//                if(!MainActivity.getSharedPrefStatus(sharedPreferences)){
+//                    showToast("Silahkan login terlebih dahulu");
+//                    navigateToLoginFragment(getView());
+//                } else {
                     viewModel.deletePasien(adapter.getPasienAt(viewHolder.getAdapterPosition()));
                     showToast("Data dihapus");
-                }
+//                }
             }
         });
     }

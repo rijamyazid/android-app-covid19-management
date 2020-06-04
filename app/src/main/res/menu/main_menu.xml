@@ -10,11 +10,7 @@
         android:icon="@drawable/ic_history_black_24dp"
         android:title="@string/history_icon_text" />
     <item
-        android:id="@+id/loginFragment"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="@string/account_icon_text" />
-    <item
         android:id="@+id/aboutUsFragment"
         android:icon="@drawable/ic_supervisor_account_white_24dp"
-        android:title="@string/about_us" />
+        android:title="@string/kelompok" />
 </menu>
