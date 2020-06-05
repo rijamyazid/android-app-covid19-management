@@ -11,4 +11,7 @@
 
     <color name="colorMale">#3F8F74</color>
     <color name="colorFemale">#CD4343</color>
+    <color name="colorSakit">#2C347C</color>
+    <color name="colorSembuh">#3C938B</color>
+    <color name="colorMeninggal">#EA6C55</color>
 </resources>

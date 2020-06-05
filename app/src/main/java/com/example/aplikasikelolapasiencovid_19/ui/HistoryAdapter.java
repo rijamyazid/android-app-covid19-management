@@ -102,11 +102,11 @@ public class HistoryAdapter extends ListAdapter<Pasien, HistoryAdapter.ViewHolde
 
     private void setStatusColor(Pasien pasien, ViewHolder holder){
         if(pasien.getStatus().equals(DBDummy.status.get("Sakit"))){
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorBlack));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorSakit));
         } else if(pasien.getStatus().equals(DBDummy.status.get("Sembuh"))){
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorGreenLight));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorSembuh));
         } else {
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorRedDark));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.colorMeninggal));
         }
     }
 
