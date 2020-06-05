@@ -23,6 +23,10 @@ public class HomeViewModel extends AndroidViewModel {
         return repository.getPasienByStatus(status);
     }
 
+    public LiveData<List<Pasien>> getPasienByJK(String jk){
+        return repository.getPasienByJK(jk);
+    }
+
     public HomeViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository(application);

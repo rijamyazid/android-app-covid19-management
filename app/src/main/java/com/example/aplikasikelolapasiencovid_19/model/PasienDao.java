@@ -25,4 +25,7 @@ public interface PasienDao {
     @Query("SELECT * FROM pasien_table WHERE status=:status")
     LiveData<List<Pasien>> getPasienByStatus(String status);
 
+    @Query("SELECT * FROM pasien_table WHERE jenisKelamin=:jk")
+    LiveData<List<Pasien>> getPasienByJK(String jk);
+
 }

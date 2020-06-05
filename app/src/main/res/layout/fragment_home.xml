@@ -1,210 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/gapSmall"
-    android:orientation="vertical"
     tools:context=".ui.HomeFragment">
-
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/gapMedium">
-        <LinearLayout
+        android:padding="@dimen/gapSmall"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/gapMedium"
-            android:orientation="vertical">
-            <TextView
+            android:layout_marginBottom="@dimen/gapMedium">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jumlah pasien"/>
-            <TextView
-                android:id="@+id/tv_pasien_jml_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="24sp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:padding="@dimen/gapMedium"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah pasien"/>
+                <TextView
+                    android:id="@+id/tv_pasien_jml_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="24sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/gapMedium">
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/gapMedium"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rasio Jenis Kelamin"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/gapSmall"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/colorPrimary"/>
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_pie_gender_rasio"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"/>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow>
+                        <TextView
+                            android:layout_weight="1"
+                            android:paddingVertical="@dimen/gapSmall"
+                            android:gravity="center"
+                            android:background="@color/colorPrimary"
+                            android:text="Warna"
+                            android:textColor="@color/colorWhite"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:paddingVertical="@dimen/gapSmall"
+                            android:gravity="center"
+                            android:background="@color/colorPrimary"
+                            android:text="Atribut"
+                            android:textColor="@color/colorWhite"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:paddingVertical="@dimen/gapSmall"
+                            android:gravity="center"
+                            android:background="@color/colorPrimary"
+                            android:text="Jumlah"
+                            android:textColor="@color/colorWhite"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:paddingVertical="@dimen/gapSmall"
+                            android:gravity="center"
+                            android:background="@color/colorPrimary"
+                            android:text="%"
+                            android:textColor="@color/colorWhite"/>
+                    </TableRow>
+                    <TableRow android:padding="@dimen/gapSmall">
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:background="@color/colorMale"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Laki-Laki"/>
+                        <TextView
+                            android:id="@+id/tv_male_count"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            tools:text="3"/>
+                        <TextView
+                            android:id="@+id/tv_male_count_per"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            tools:text="60%"/>
+                    </TableRow>
+                    <TableRow android:padding="@dimen/gapSmall">
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:background="@color/colorFemale"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Perempuan"/>
+                        <TextView
+                            android:id="@+id/tv_female_count"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            tools:text="2"/>
+                        <TextView
+                            android:id="@+id/tv_female_count_per"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            tools:text="40%"/>
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/gapMedium"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_sakit_home"
+            android:layout_marginBottom="@dimen/gapMedium">
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jumlah pasien sakit"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_sakit_home"
-                android:orientation="horizontal">
+                android:padding="@dimen/gapMedium"
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tv_sakit_jml_home"
+                    android:id="@+id/tv_sakit_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah pasien sakit"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
+                    android:layout_below="@id/tv_sakit_home"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_sakit_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/tv_sakit_pasien_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:id="@+id/tv_sakit_pasien_jml_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@id/tv_sakit_home"
-                android:layout_alignParentEnd="true">
-                <TextView
-                    android:id="@+id/tv_sakit_percent_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="5"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="%"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                    android:orientation="horizontal"
+                    android:layout_below="@id/tv_sakit_home"
+                    android:layout_alignParentEnd="true">
+                    <TextView
+                        android:id="@+id/tv_sakit_percent_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="5"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="%"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/gapMedium">
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/gapMedium"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_sembuh_home"
+            android:layout_marginBottom="@dimen/gapMedium">
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jumlah pasien sembuh"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_sembuh_home"
-                android:orientation="horizontal">
+                android:padding="@dimen/gapMedium"
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tv_sembuh_jml_home"
+                    android:id="@+id/tv_sembuh_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah pasien sembuh"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
+                    android:layout_below="@id/tv_sembuh_home"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_sembuh_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/tv_sembuh_pasien_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:id="@+id/tv_sembuh_pasien_jml_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@id/tv_sembuh_home"
-                android:layout_alignParentEnd="true">
-                <TextView
-                    android:id="@+id/tv_sembuh_percent_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="5"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="%"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                    android:orientation="horizontal"
+                    android:layout_below="@id/tv_sembuh_home"
+                    android:layout_alignParentEnd="true">
+                    <TextView
+                        android:id="@+id/tv_sembuh_percent_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="5"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="%"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/gapMedium">
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/gapMedium"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_meninggal_home"
+            android:layout_marginBottom="@dimen/gapMedium">
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jumlah pasien meninggal"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_meninggal_home"
-                android:orientation="horizontal">
+                android:padding="@dimen/gapMedium"
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tv_meninggal_jml_home"
+                    android:id="@+id/tv_meninggal_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah pasien meninggal"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
+                    android:layout_below="@id/tv_meninggal_home"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_meninggal_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/tv_meninggal_pasien_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:id="@+id/tv_meninggal_pasien_jml_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_meninggal_home"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_meninggal_percent_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="5"
-                    android:text="0"
-                    android:textSize="24sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="5"
-                    android:text="%"
-                    android:textSize="24sp"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+                    android:layout_below="@id/tv_meninggal_home"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_meninggal_percent_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="5"
+                        android:text="0"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="5"
+                        android:text="%"
+                        android:textSize="24sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

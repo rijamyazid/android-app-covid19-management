@@ -8,4 +8,7 @@
     <color name="colorBlack">#000000</color>
     <color name="colorGreenLight">@android:color/holo_green_light</color>
     <color name="colorRedDark">@android:color/holo_red_dark</color>
+
+    <color name="colorMale">#3F8F74</color>
+    <color name="colorFemale">#CD4343</color>
 </resources>
