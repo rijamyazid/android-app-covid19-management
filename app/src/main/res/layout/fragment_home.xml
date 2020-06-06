@@ -10,12 +10,10 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/gapSmall"
         android:orientation="vertical">
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            android:layout_marginBottom="@dimen/gapExtraSmall">
+            app:cardUseCompatPadding="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,21 +22,41 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jumlah pasien"/>
-                <TextView
-                    android:id="@+id/tv_pasien_jml_home"
-                    android:layout_width="wrap_content"
+                    android:text="Pasien Total"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/gapSmall"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/colorPrimary"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="24sp"/>
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/gapSmall">
+                    <TextView
+                        android:id="@+id/tv_pasien_jml_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="0"
+                        android:textSize="42sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text=" Pasien"/>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            android:layout_marginBottom="@dimen/gapExtraSmall">
+            app:cardUseCompatPadding="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
