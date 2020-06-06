@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.aplikasikelolapasiencovid_19.helper.DBDummy;
 import com.example.aplikasikelolapasiencovid_19.model.Pasien;
 import com.example.aplikasikelolapasiencovid_19.viewmodel.HistoryViewModel;
 
@@ -41,19 +42,6 @@ public class PasienActivity extends AppCompatActivity {
     public static final String EXTRA_STATUS =
             "com.example.aplikasikelolapasiencovid_19.EXTRA_STATUS";
     private ArrayAdapter<String> dataAdapter;
-    private List<String> jkList = new ArrayList<String>(){
-        {
-            add("Laki-Laki");
-            add("Perempuan");
-        }
-    };
-    private List<String> provinsiList = new ArrayList<String>(){
-        {
-            add("Jakarta");
-            add("Bali");
-            add("Bandung");
-        }
-    };
 
 
     private Button btnCancel, btnSave;
@@ -171,7 +159,7 @@ public class PasienActivity extends AppCompatActivity {
     }
 
     private void setSpinnerValue(){
-        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, provinsiList);
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, DBDummy.LIST_PROVINSI);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvinsi.setAdapter(dataAdapter);
     }

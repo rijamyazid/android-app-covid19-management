@@ -14,4 +14,10 @@
     <color name="colorSakit">#2C347C</color>
     <color name="colorSembuh">#3C938B</color>
     <color name="colorMeninggal">#EA6C55</color>
+
+    <color name="colorBtnPrimary">#337AB7</color>
+    <color name="colorBtnPrimaryClick">#286090</color>
+    <color name="colorBtnDanger">#D9534F</color>
+    <color name="colorBtnDangerClick">#C9302C</color>
+
 </resources>
