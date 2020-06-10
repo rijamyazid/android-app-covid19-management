@@ -6,10 +6,39 @@
     tools:context=".ui.tabview.AgoyFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Agoy" />
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        android:contentDescription="TODO" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/yoga" />
+
+    <TextView
+        android:id="@+id/textAgoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="Yoga Aryanda"
+        android:textStyle="bold"
+        android:textSize="12pt"
+        />
+    <TextView
+        android:id="@+id/textNimAgoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:text=" 3411171097"
+        android:textSize="12pt"
+        android:textStyle="bold" />
+
 
 </FrameLayout>

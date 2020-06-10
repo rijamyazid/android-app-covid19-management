@@ -6,10 +6,39 @@
     tools:context=".ui.tabview.DolaFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Dola" />
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        android:contentDescription="TODO" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/dola" />
+
+    <TextView
+        android:id="@+id/textDola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="Dola Febio"
+        android:textStyle="bold"
+        android:textSize="12pt"
+        />
+    <TextView
+        android:id="@+id/textNimDola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:text=" 3411171089"
+        android:textSize="12pt"
+        android:textStyle="bold" />
+
 
 </FrameLayout>

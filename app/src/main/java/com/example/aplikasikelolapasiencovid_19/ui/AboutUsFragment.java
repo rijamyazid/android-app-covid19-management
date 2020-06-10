@@ -24,7 +24,7 @@ public class AboutUsFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
-    private String[] tabName = {"Rija", "Ridwan", "Irvan", "Dola", "Agoy"};
+    private String[] tabName = {"Rija", "Ridwan", "Irvan", "Dola", "Yoga"};
 
     public AboutUsFragment() {
         // Required empty public constructor
